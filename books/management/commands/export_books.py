@@ -31,6 +31,8 @@ class Command(BaseCommand):
                     'Book "{}" already exists. Skipping..'.format(
                         basename)))
             else:
+                self.stdout.write(
+                    'Start processing {}'.format(basename))
                 try:
                     parsed_data = pdf_book_parser.parse(file_path)
                     created.append(Book.objects.create(**parsed_data))

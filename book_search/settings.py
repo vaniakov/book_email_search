@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import mongoengine
 
+# mongoengine setup
 _MONGODB_USER = 'django_books'
 _MONGODB_PASSWD = 'secret'
 _MONGODB_HOST = 'localhost'
@@ -29,6 +30,21 @@ AUTHENTICATION_BACKENDS = (
 
 TEST_RUNNER = 'mongorunner.TestRunner'
 
+# CELERY STUFF
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Kiev'
+
+# enable if you want emails to be printed to the stdout
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# save emails to tmp/email-messages
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'tmp/email-messages/'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,7 +58,7 @@ SECRET_KEY = 'ju@+z6#$81!v1xctf70_8d@61*vpn%9)(fkt$629l0-xco6lk8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -73,7 +89,9 @@ ROOT_URLCONF = 'book_search.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
