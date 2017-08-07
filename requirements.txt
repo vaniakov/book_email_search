@@ -1,6 +1,5 @@
 Django==1.11.4
 mongoengine==0.13.0
-django-mongorunner==0.1
 PyPDF2==1.26.0
 celery==4.1.0
 redis==2.10.5

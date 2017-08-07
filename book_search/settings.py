@@ -28,7 +28,7 @@ AUTHENTICATION_BACKENDS = (
     'mongoengine.django.auth.MongoEngineBackend',
 )
 
-TEST_RUNNER = 'mongorunner.TestRunner'
+TEST_RUNNER = 'book_search.tests.TestRunner'
 
 # CELERY STUFF
 CELERY_BROKER_URL = 'redis://localhost:6379'
