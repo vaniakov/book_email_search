@@ -20,7 +20,6 @@ def search_for_query(query, email, time_limit):
     """
     logger.info("Search started...")
     result = Book.find_for_query(query, time_limit)
-    logger.info(str(result))
     logger.info('Search finished!')
     send_result_email(email, query, result)
     logger.info('Message to %s has been sent!', email)
