@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Your request with query "<strong>{{ query }}</strong>" has been sent to the server.</h2>
+  <h3>The results will be sent to your email <a href="mailto:{{ email }}">{{ email }}</a>
+  {% if time_limit == None %}
+    in {{ time_limit }} seconds.
+  {% else %}
+    as soon as all books will be scanned.
+  {% endif %}
+  </h3>
+{% endblock %}
