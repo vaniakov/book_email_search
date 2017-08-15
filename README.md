@@ -50,3 +50,16 @@ By default emails sent from the app will be stored at:
 ```
 BASE_DIR/tmp/email-messages/
 ```
+
+## Run daemons
+```
+sudo service mongodb start
+sudo service redis start
+celery -A book_search worker -l info &
+```
+
+## Run DEV server
+```
+python manage.py runserver
+```
+
